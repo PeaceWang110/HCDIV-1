@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather forecast for Singapore</title>
+    <title>Singapore 2-Hour Weather Forecast</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,13 +21,14 @@
     </style>
 </head>
 <body>
-    <h1>Weather forecast for Singapore</h1>
-    <p>Wang Heping</p> 
+    <h1>Singapore 2-Hour Weather Forecast</h1>
+    <p>Wang Heping</p>
+
     <table>
         <thead>
             <tr>
-                <th>area</th>
-                <th>Weather forecast</th>
+                <th>Area</th>
+                <th>Forecast</th>
             </tr>
         </thead>
         <tbody id="weather-data"></tbody>
@@ -40,15 +41,17 @@
                 const data = await response.json();
                 const forecasts = data.items[0].forecasts;
                 const tableBody = document.getElementById('weather-data');
-                
+                tableBody.innerHTML = '';
+
                 forecasts.forEach(forecast => {
                     const row = `<tr><td>${forecast.area}</td><td>${forecast.forecast}</td></tr>`;
                     tableBody.innerHTML += row;
                 });
             } catch (error) {
-                console.error("无法获取天气数据:", error);
+                console.error("Failed to fetch weather data:", error);
             }
         }
+
         fetchWeather();
     </script>
 </body>

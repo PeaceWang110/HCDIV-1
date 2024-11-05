@@ -27,6 +27,12 @@
             font-size: 16px;
             margin-top: 5px;
         }
+        #searchInput {
+            width: 50%;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
         table {
             margin: 0 auto;
             border-collapse: collapse;
@@ -42,6 +48,9 @@
     <h1>Singapore 2-Hour Weather Forecast</h1>
     <p>Wang Heping</p>
     <p class="last-updated" id="last-updated">Last updated: </p>
+
+    <!-- Search box -->
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for area...">
 
     <table>
         <thead>
@@ -72,6 +81,17 @@
             } catch (error) {
                 console.error("Failed to fetch weather data:", error);
             }
+        }
+
+        // Search function
+        function searchTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const rows = document.querySelectorAll("#weather-data tr");
+
+            rows.forEach(row => {
+                const area = row.querySelector("td").textContent.toLowerCase();
+                row.style.display = area.includes(input) ? "" : "none";
+            });
         }
 
         fetchWeather();

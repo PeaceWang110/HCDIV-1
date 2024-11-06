@@ -22,7 +22,7 @@
             font-weight: bold; 
             font-size: 28px; 
         }
-        .last-updated {
+        .last-updated, .expiry {
             color: #333;
             font-size: 16px;
             margin-top: 5px;
@@ -48,6 +48,7 @@
     <h1>Singapore 2-Hour Weather Forecast</h1>
     <p>Wang Heping</p>
     <p class="last-updated" id="last-updated">Last updated: </p>
+    <p class="expiry" id="expiry-date">Expires on: </p>
 
     <!-- Search box -->
     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for area...">
@@ -69,10 +70,12 @@
                 const data = await response.json();
                 const forecasts = data.items[0].forecasts;
                 const lastUpdated = new Date(data.items[0].update_timestamp).toLocaleString();
+                const expiryDate = new Date(data.items[0].valid_period.end).toLocaleString();
 
                 const tableBody = document.getElementById('weather-data');
                 tableBody.innerHTML = '';
                 document.getElementById('last-updated').textContent = 'Last updated: ' + lastUpdated;
+                document.getElementById('expiry-date').textContent = 'Expires on: ' + expiryDate;
 
                 forecasts.forEach(forecast => {
                     const row = `<tr><td>${forecast.area}</td><td>${forecast.forecast}</td></tr>`;

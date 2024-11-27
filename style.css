@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    color: #006400;
+    font-weight: bold;
+}
+
+p {
+    font-family: "Courier New", monospace;
+    color: #006400;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.last-updated, .expiry {
+    color: #333;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+#searchInput {
+    width: 50%;
+    padding: 10px;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
